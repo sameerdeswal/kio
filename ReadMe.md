@@ -70,4 +70,4 @@ Once the backend service is running successfully, you can access the demo page a
 
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the GNU GENERAL PUBLIC LICENSE License.
