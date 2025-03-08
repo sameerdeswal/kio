@@ -1,8 +1,7 @@
 import logger from "../../logger.js";
 import databaseProvider from "../database/databaseProvider.js";
 import embeddingGeneratorProvider from "../embedding/embeddingGeneratorProvider.js";
-import dataRepository from "../repositories/dataRepository.js";
-import huggingFaceService from "./huggingFaceService.js";
+import huggingFaceService from "./huggingfaceService.js";
 
 class LLMService {
 

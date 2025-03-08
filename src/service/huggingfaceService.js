@@ -72,5 +72,5 @@ class HuggingFaceService {
     }
 }
 
-const huggingFaceService = new HuggingFaceService();
-export default huggingFaceService;
+const huggingfaceService = new HuggingFaceService();
+export default huggingfaceService;
