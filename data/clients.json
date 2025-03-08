@@ -1,0 +1,44 @@
+{
+    "clients": [
+        {
+            "id": "client1",
+            "bot_id": "bot1",
+            "allowedHosts": [
+                "localhost:5000"
+            ],
+            "bot_name": "Dummy Bot",
+            "welcome_message": "Hi there! How can I assist you today? I have knowledge of minimalism, so feel free to ask anything!",
+            "welcome_options": [
+                "benefits"
+            ],
+            "knowledgebase": "minimalism",
+            "options": [
+                {
+                    "key": "benefits",
+                    "label": "Benefits of Minimalism",
+                    "value": "Benefits of Minimalism"
+                }
+            ]
+        },
+        {
+            "id": "client1",
+            "bot_id": "bot2",
+            "allowedHosts": [
+                "localhost:5000"
+            ],
+            "bot_name": "Dummy Bot",
+            "welcome_message": "Hi there! How can I assist you today? I have knowledge of financial literacy, so feel free to ask anything!",
+            "welcome_options": [
+                "meaning"
+            ],
+            "knowledgebase": "financial-literacy",
+            "options": [
+                {
+                    "key": "meaning",
+                    "label": "Meaning of Financial literacy",
+                    "value": "Meaning of Financial literacy"
+                }
+            ]
+        }
+    ]
+}

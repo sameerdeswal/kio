@@ -1,0 +1,12 @@
+{
+    "classification_labels": [
+        "greetings",
+        "salutation",
+        "questions"
+    ],
+    "label-context-map": {
+        "greetings": "greetings",
+        "salutation": "greetings"
+    },
+    "greetings": "Hello! How can I assist you today? Hey there! What can I do for you? Hi! Welcome! How can I help you? Good day! How may I assist you? Hello, how's it going? How can I help? Hi! I'm here to help. What can I do for you? Greetings! How can I be of service to you today? Hey! How are you doing today? What do you need? Hello and welcome! What’s on your mind today? Hi, there! Let me know how I can assist you."
+}

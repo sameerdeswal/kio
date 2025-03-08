@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AI Chatbot Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Open Sans';
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Container */
+        .container {
+            text-align: center;
+            padding: 30px 30px 0px 30px;
+        }
+
+        /* Header */
+
+
+        @media (min-width: 950px) {
+            header {
+                font-size: 60px;
+                font-weight: bolder;
+            }
+
+            .robo-icon {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 950px) {
+            header {
+                font-size: 40px;
+                font-weight: bolder;
+            }
+
+            .robo-icon {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            header {
+                font-size: 20px;
+                font-weight: bolder;
+            }
+
+            .robo-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .fade-1 {
+            animation: 2s demo-fade;
+        }
+
+        .fade-2 {
+            animation: 3.5s demo-fade;
+        }
+
+        .fade-5 {
+            animation: 5s demo-fade;
+        }
+
+        /* Description */
+        .description {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 10px;
+            font-size: 10px;
+            color: #777;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        footer a:hover {
+            color: #2980b9;
+        }
+
+        .center-vertically {
+            display: grid;
+            place-items: center;
+            /* Centers both horizontally and vertically */
+            /* height: 100vh; */
+            /* Full viewport height */
+        }
+
+        @keyframes demo-fade {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+
+        button.tab-button.selected {
+            background-color: #4a4a4a;
+            color: white;
+        }
+
+        .position-container {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            flex-direction: row;
+        }
+
+        .knowledge-base {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .tabs,
+        .position-div{
+            font-size: 14px;
+        }
+
+        .tabs,
+        .position-div {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: 5px 10px;
+        }
+
+        .position-button,
+        .tab-button {
+            padding: 5px 10px;
+            margin-left: 10px;
+            cursor: pointer;
+            background-color: #ffffff;
+            color: #2f2f2f;
+            border: 1px solid #e2e2e2;
+            border-radius: 5px;
+            font-family: 'Open Sans';
+            font-weight: 600;
+        }
+
+        .tab-button:hover {
+            background-color: #eeeeee;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            font-size: 12px;
+            height: 30vh;
+            overflow-y: scroll;
+            border: 1px solid #d1d1d1;
+            background-color: white;
+            border-radius: 5px;
+            font-family: 'Open Sans';
+        }
+
+        .tab-div {
+            display: flex;
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+    <script src="http://localhost:5000/js/chatbot.min.js"></script>
+    <script>
+        window.initialiseBot({
+            bot_endpoint: "localhost:5000",
+            client_id: "client1",
+            bot_id: "bot1",
+            position: "bottom-right", //top-left,top-right,bottom-left,bottom-right
+            name: "Assistant Bot",
+            pulsating: true
+        })
+    </script>
+</head>
+
+<body>
+    <div class="center-vertically">
+        <div class="container">
+            <div>
+                <svg class="robo-icon fade-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                    <path
+                        d="M320 0c17.7 0 32 14.3 32 32l0 64 120 0c39.8 0 72 32.2 72 72l0 272c0 39.8-32.2 72-72 72l-304 0c-39.8 0-72-32.2-72-72l0-272c0-39.8 32.2-72 72-72l120 0 0-64c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224l16 0 0 192-16 0c-26.5 0-48-21.5-48-48l0-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-16 0 0-192 16 0z" />
+                </svg>
+                <header class="fade-1">KIO AI-Powered Chatbot</header>
+            </div>
+            <p class="description fade-2">This is a demo page showcasing an AI-powered chatbot with an integrated
+                knowledge base.</p>
+        </div>
+    </div>
+    <div class="position-container fade-5">
+        <div class="position-div">
+            <span>Bot Position : </span>
+            <button class="position-button" onclick="window.changeBotPosition('top-left')">Top Left</button>
+            <button class="position-button" onclick="window.changeBotPosition('top-right')">Top Right</button>
+            <button class="position-button" onclick="window.changeBotPosition('bottom-left')">Bottom Left</button>
+            <button class="position-button" onclick="window.changeBotPosition('bottom-right')">Bottom Right</button>
+        </div>
+    </div>
+    <div class="knowledge-base fade-5">
+        <div class="tabs">
+            <span>Choose a knowledge base and chat : </span>
+            <button class="tab-button" onclick="showContent('tab1',this,'minimalism')">Minimalism</button>
+            <button class="tab-button" onclick="showContent('tab2',this,'financial-literacy')">Financial
+                Literacy</button>
+        </div>
+        <div class="tab-div">
+            <div id="tab1" class="tab-content">
+                <p>The Benefits of Minimalism
+                    When people look toward minimalism as a lifestyle, they often see only the act of decluttering. But
+                    ultimately, minimalism involves the benefits we experience once we’re on the other side of
+                    decluttering. By letting go of everything in the way, I’ve been able to immerse myself in what’s
+                    important to me, and the benefits are remarkable.
+                    Health. I used to weigh 80 pounds more than I weigh today. Not only was I fat, but I felt tired,
+                    stressed, gross. Minimalism helped me untether from that life—a life focused on material “success.”
+                    Once I regained control, I made time to concentrate on my health. This increased focus allowed me to
+                    improve my diet, exercise, and sleep, which minimized my stress and increased my happiness. By
+                    spending more time on my health, I created more time for everything else. What a beautiful paradox.
+                    Relationships. Once I stopped trying to impress others with my consumerist trophies, I was able to
+                    reprioritize my relationships by putting primary relationships first, secondary relationships
+                    second, and peripheral relationships last. This sounds tautological, but for more than a decade I
+                    apportioned too much time to coworkers and networking buddies, and I forsook the people I cared
+                    about most.
+                    Finances. This was the initial benefit that led me to minimalism: financial freedom. Sure, I made
+                    great money in the corporate world—but I spent even better money. By age 28 I was earning six
+                    figures, but I had more than six figures in debt because our culture places an extraordinary
+                    emphasis on material wealth as a sign of true wealth. Minimalism taught me that one’s true worth is
+                    not determined by his or her net worth.
+                    Creativity. For years I put off my passion: writing. I “aspired” to be a writer someday, but I
+                    didn’t actually put in the work. Purging the ephemera consuming my time helped me realize “aspire”
+                    is merely a synonym for “procrastinate.” With the stuff out of the way, I was able to start crafting
+                    my personal masterpiece.
+                    Contribution. No longer am I obsessed with only myself. By jettisoning my old identity, I formed a
+                    new identity, a large part of which revolves around contribution to others. Contributing beyond
+                    ourselves brings with it a sense of fulfillment that we can’t get from buying things. Giving is
+                    living: if we want to feel truly alive, we must give.
+                    You see, removing the clutter is not the end result of minimalism—it is merely the first step.
+                    Understanding why you’re taking that first step gives you the leverage you need to keep going. When
+                    in doubt, ask yourself: How might my life be better with less? Those answers are far more powerful
+                    than decluttering alone.</p>
+            </div>
+            <div id="tab2" class="tab-content" style="display:none;">
+                <p>
+                    Financial literacy Meaning : Financial literacy is the knowledge and ability to manage your money in
+                    a way that helps you grow stability and feel confident and resilient. Key aspects of financial
+                    literacy are budgeting, saving and managing debt.
+                    Financial literacy is the confident understanding of concepts including saving, budgeting, investing
+                    and debt that leads to informed financial decisions and stability.
+                    Not only does increasing your knowledge of money matters make it easier to manage your finances, but
+                    it can also help you lower your stress levels: Knowledge of key financial concepts is tied to less
+                    financial stress and anxiety, according to a Global Financial Literacy Excellence Center survey on
+                    financial anxiety.
+                    In other words, increasing your financial savvy can help you boost your overall well-being. Read on
+                    to learn more about what financial literacy is, why it's important and steps you can take to become
+                    more financially literate.
+                    Why Is Financial Literacy Important?
+                    Financial literacy is important because it supports financial well-being, or a confidence in your
+                    ability to manage your money well. Everyone experiences financial ups and downs, but financially
+                    literate people may be more likely to:
+                    Manage money with a budget
+                    Save more money for the future
+                    Manage credit well and avoid unnecessary debt
+                    Feel financially prepared for emergencies
+                    Feel less stressed about money
+                    Feel more financially secure overall
+                    Key Components of Financial Literacy
+                    Here are the five foundational pieces of financial literacy to learn about first:
+                    Budgeting
+                    Controlling overspending and making conscious choices about where your money goes are crucial for
+                    building financial stability. A budget is a blueprint for how you'll get there. It's a plan for how
+                    you'll direct your income toward affording your expenses, live within your means and meet your
+                    savings goals.
+                    How to start budgeting:
+                    Learn about how to make a budget.
+                    Once you make a budget, follow tips to stick to your budget.
+                    Learn about different budgeting methods and top-rated mobile budgeting apps.
+                    Saving
+                    Spending less than you earn and putting the difference into savings helps you build security and
+                    achieve goals down the line.
+                    Generally speaking, your first order of business should be setting up an emergency savings fund and
+                    aiming to keep around three to six months' worth of expenses socked away. Beyond setting aside money
+                    for unexpected expenses such as urgent car repairs, saving in advance can help you afford things you
+                    need or want, from holiday gift purchases to next summer's vacation, without going into debt.
+                    Fact: According to the Federal Reserve, 54% of all adults had three months' worth of emergency
+                    savings in 2023. The average savings account balance for families was $8,000 in 2022, according to
+                    the latest Survey of Consumer Finances study.
+                    Investing
+                    Beyond saving for the short term, start investing for large future goals, such as retirement.
+                    Managing Debt
+                    For better or worse, debt is a common part of financial life. People borrow to achieve any number of
+                    goals. You might take out student loans to attend college, an auto loan when you need a new car or a
+                    mortgage when you're ready to buy a house. You might also use a credit card or a personal loan when
+                    you want to finance a purchase and pay it back over time.
+                    But debt can also be destructive to your finances. If you fall too deeply into debt, whatever the
+                    reason, getting out can be challenging—plus get in the way of reaching your other financial goals.
+                    Building Credit
+                    Financial literacy can help you grow and protect your credit score. By learning what impacts your
+                    credit, you're better situated to make borrowing choices that contribute to a high score, and to
+                    avoid choices that can do damage.
+                    The Power of Financial Literacy
+                    Getting up to speed on the basics of personal money management can make navigating financial
+                    decisions easier. That can mean keeping a close eye on your bank and credit card accounts so you're
+                    aware of potential fraud as soon as possible, or being able to recover from a costly unexpected car
+                    repair quickly thanks to ample cash savings.
+                    Ultimately, the best outcome of your commitment to financial literacy will be increased confidence
+                    in yourself. When you have the knowledge to make informed decisions, you'll trust your ability to
+                    make sound financial moves and avoid too much debt or risk. From there, you can create and pursue
+                    financial goals that will most support your vision for a happy life.</p>
+            </div>
+        </div>
+
+        <script>
+            function showContent(tabId, btn, kb) {
+                var hidden = document.getElementById(tabId).style.display !== "block";
+                var contents = document.querySelectorAll('.tab-content');
+                contents.forEach(function (content) {
+                    content.style.display = 'none';
+                });
+                window.kb = undefined;
+
+                var btns = document.querySelectorAll('.tab-button');
+                btns.forEach(function (btn) {
+                    btn.classList.remove("selected");
+                });
+                if (hidden) {
+                    document.getElementById(tabId).style.display = 'block';
+                    btn.classList.add("selected");
+                    window.kb = kb;
+                }
+            }
+        </script>
+    </div>
+    <footer>
+        <p>Made with ❤️ by Sameer Deswal</p>
+    </footer>
+
+</body>
+
+</html>
