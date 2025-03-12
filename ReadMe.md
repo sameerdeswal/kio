@@ -6,6 +6,9 @@ Currently, the chatbot employs an in-memory database for vector storage and perf
 
 Additionally, it leverages Hugging Face's `transformers.js` library to generate relevant responses.
 
+![1741409743613](https://github.com/user-attachments/assets/dac7de1b-35b1-4d79-b791-91ba0c84c2c0)
+
+
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
